@@ -11,11 +11,9 @@ class Preferances extends Component {
     } 
 
     result = (data) => {
-        let res = []
-        data.forEach(({wont_eat, drinks}) => {
-            res = this.matchPreferances(wont_eat, drinks);     
+        return data.forEach(({wont_eat, drinks}) => {
+            return this.matchPreferances(wont_eat, drinks);     
         });
-        console.log('TROLL', res);
     }
 
     getUserFood = (data) => {
@@ -44,6 +42,7 @@ class Preferances extends Component {
                 return false;
             }
         });
+        console.log('PLACES EACH USER CAN GO TO: ', res);
         return res;
     }
 
