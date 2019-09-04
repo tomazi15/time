@@ -2,17 +2,16 @@ import React, { Component } from 'react';
 
 class Users extends Component {
     
-    memberList = (members) => {
-        return members.map((member) => {
-            return member.name;
-        })
-    } 
-
     render() {
         return (
             <div>
-                <ul>
-                    <li> { this.memberList(this.props.data) } </li>
+                <h3>List of Members</h3>
+                <ul className="troll">
+                    {                    
+                        this.props.data.map((member) => {
+                            return <li> { member.name } </li> 
+                        }) 
+                    }
                 </ul>         
             </div>
         );

@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 
 class Venues extends Component {
-    venueList = (venues) => {
-        return venues.map((venue) => {
-            return venue.name;
-        })
-    } 
     render() {
         return (
             <div>
+                <h3>List of Venues</h3>
                 <ul>
-                    <li> { this.venueList(this.props.data) } </li>
+                    {                    
+                        this.props.data.map((venue) => {
+                            return <li> { venue.name } </li> 
+                        }) 
+                    }
                 </ul>         
             </div>
         );

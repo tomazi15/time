@@ -4,16 +4,15 @@ import Users from '../components/Users/users';
 import Venues from '../components/Venues/venues';
 
 class Preferances extends Component {
-    
-    constructor() {
-        super();
-        this.state = {result: []};
-    } 
+    state = {result: null};
 
     result = (data) => {
-        return data.forEach(({wont_eat, drinks}) => {
-            return this.matchPreferances(wont_eat, drinks);     
+        let answer = [];
+        data.forEach(({wont_eat, drinks}) => {
+            return answer.push(this.matchPreferances(wont_eat, drinks));     
         });
+
+        this.setState({result: [...answer]})
     }
 
     getUserFood = (data) => {
@@ -42,17 +41,18 @@ class Preferances extends Component {
                 return false;
             }
         });
-        console.log('PLACES EACH USER CAN GO TO: ', res);
+
         return res;
     }
 
-    render () {        
+    render () { 
+        console.log('Restaurants Members can go to individually',this.state.result);
         return (
             <div>
                 <div className="user-venue">
                     <Users data={USERSDATA} />
                     <Venues data={VENUESDATA} />
-                    <button onClick={ this.result(USERSDATA) }>Results</button>
+                    <button onClick={ () => {this.result(USERSDATA) }}>Results</button>
                 </div>
             </div>
         );
